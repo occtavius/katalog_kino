@@ -1,0 +1,32 @@
+<!-- <p>
+  moovie works!
+</p> -->
+<div class="overlay" *ngIf="expand" (click)="expandcollapse()"> </div>
+
+<div [ngClass]="getBookClass()">
+
+  <div *ngIf="!showButton()" class="overlaps">
+    <img class="overlapsimg" src='assets\pics\matchred.svg' alt="">
+    <div class="overlapstxt"> Совпало</div>
+</div>
+
+  <img class="bookimg" [src]="getImage()" alt="" (click)="expandcollapse()">
+
+  <div [ngClass]="getTextareaClass()">
+    <div class="smalltitle">{{getFilmTitle()}}</div>
+    <div *ngIf="getLength()&&expand" class="smalltitle">{{getLength()}}</div>
+    <div *ngIf="getDescription()&&expand" class="smalltitle">{{getDescription()}}</div>
+
+    <div class="buttongroup">
+      <button *ngIf="expand" class="button-blue"> Купить</button>
+      <button *ngIf="showButton()" [ngClass]="getButtonClass()" (click)=" addOrRemoveFilm()"> + </button>
+
+    <!--   <div *ngIf="!showButton()" class="overlaps">
+        <img class="overlapsimg" src='assets\pics\matchred.svg' alt="">
+        <div class="overlapstxt"> Совпало</div>
+      </div> -->
+
+
+    </div>
+  </div>
+</div>

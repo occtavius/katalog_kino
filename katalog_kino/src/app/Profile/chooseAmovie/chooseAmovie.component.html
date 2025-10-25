@@ -1,0 +1,23 @@
+ 
+<div  #movieElement class="profileblock">
+  <h3>{{ "Введите название фильма" }}</h3>
+  <div class="profile-form">
+    <input class="profile-field" type="text" #keywordInput [placeholder]="'movieSearchPlaceholder' | translate" />
+    <button class="button-blue" (click)="searchMovies(keywordInput.value)">{{ 'searchButton' | translate }}</button>
+  </div>
+  <!-- <p>{{ 'addMoviesInstruction' | translate }}</p> -->
+  <div class="profileblock-horiz">
+    <movie *ngFor="let film of searchResult" [film]="film" [user]="user"></movie>
+  </div>
+  <!-- <h3>{{ 'yourMoviesTitle' | translate }}</h3>
+  <div *ngIf="!userMoviesEmpty()&&elementVisible" class="profileblock-horiz">
+    <movie
+    [@animationDelayed]="{
+      value: '',
+      params: {
+        timings: getAnimationTimings(i)
+      }
+    }" 
+    *ngFor="let film of user.films; let i = index;" [film]="film" [user]="user" [myself]="undefined"></movie>
+  </div> -->
+</div>
