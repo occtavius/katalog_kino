@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscribe()
+   /*  this.subscribe() */
   }
 
 
@@ -57,8 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   uselocale() {
 
-    let locale = this.syncservice.checklocale()
-    this.translateService.use(locale);
+   /*  let locale = this.syncservice.checklocale()
+    this.translateService.use(locale); */
 
   }
 
@@ -67,37 +67,17 @@ export class AppComponent implements OnInit, OnDestroy {
       clearTimeout(this.timeoutId);
     }
     // Устанавливаем значение true
-    this.syncservice.scrollingOrTouching.next(true);
+ 
 
     // Сбрасываем значение на false через 3 секунды
-    this.timeoutId = setTimeout(() => {
-      this.syncservice.scrollingOrTouching.next(false);
-    }, 3000); // 3000 миллисекунд = 3 секунды
+    
   }
 
 
-  subscribe() {
+ 
 
 
-
-    this.syncservice.scrollingOrTouchingBS.subscribe(isscrolling => {
-
-      this.useractive = isscrolling
-      /*   console.log("useractive = "+this.useractive) */
-    })
-
-    this.setupDestroyListener()
-  }
-
-
-  setupDestroyListener() {
-    this.onWindowCloseHandler = () => {
-      console.log('Window is about to close or unload');
-      this.endSession()
-    };
-
-    window.addEventListener('beforeunload', this.onWindowCloseHandler);
-  }
+ 
 
 
 
@@ -109,9 +89,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-  async endSession() {
-   /*  this.syncservice.finishSession(this.syncservice.session).then(session => this.syncservice.session = session) */
-    this.syncservice.session=  await this.syncservice.finishSession( this.syncservice.session) 
-  }
+ 
 
 } 

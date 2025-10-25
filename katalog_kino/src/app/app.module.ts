@@ -24,7 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
  import { MatNativeDateModule } from '@angular/material/core';
-import { MenuComponent } from './Menu/menu/menu.component';
+ 
  
 import {DragDropModule} from '@angular/cdk/drag-drop';
  
@@ -46,9 +46,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
 @NgModule({
   declarations: [
     AppComponent, ChooseAmovieComponent, MovieComponent, 
-     
-   
-    MenuComponent,   
+        
   ],
   imports: [
     FormsModule , 

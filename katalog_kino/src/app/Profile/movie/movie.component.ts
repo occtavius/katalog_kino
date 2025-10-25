@@ -22,33 +22,9 @@ export class MovieComponent implements OnInit {
   ngOnInit() { }
 
 
-  addFilm(film: Film): void {
-    let updatedme = this.user
-    if(this.myself)
-   updatedme=this.myself
+ 
 
-    if (!updatedme.films) {
-      updatedme.films = []; // Инициализация массива фильмов, если он не существует
-    }
-    updatedme.films.push(film); // Добавление фильма в массив фильмов пользователя
-    /* this.syncservice.userProfile.next(updatedme) */
-    this.updateProfile(updatedme)
-
-  }
-
-  removeFilmById(filmId: number): void {
-    if(this.myself) return
-
-    if (!this.user.films) {
-      console.log('No films to remove.');
-      return;
-    }
-
-    // Фильтруем массив фильмов, оставляя только те, у которых filmId не совпадает с переданным filmId
-    this.user.films = this.user.films.filter(film => film.filmId !== filmId);
-    /* this.syncservice.userProfile.next(this.user) */
-    this.updateProfile(this.user)
-  }
+ 
 
   filmIsAdded() {
     let added = this.hasFilm(this.film.filmId)
@@ -75,11 +51,7 @@ export class MovieComponent implements OnInit {
   }
 
   addOrRemoveFilm() {
-    if (this.filmIsAdded())
-      this.removeFilmById(this.film.filmId)
-    else
-      this.addFilm(this.film)
-  }
+console.log("Фильм добавлен")  }
 
   expandcollapse() {
     this.expand = !this.expand
@@ -163,13 +135,6 @@ export class MovieComponent implements OnInit {
   return false
   }
 
-
-  async updateProfile(user:MyUser) {
-
-    /*  let text = 'updateProfile ' + JSON.stringify(this.user)
-     console.log(text) */
  
-     await this.syncservice.updateMyProfileOnServer(user)
-   }
 
 }

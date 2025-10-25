@@ -33,6 +33,8 @@ export class Syncservice {
 
 
   }
+  localeBS = new BehaviorSubject<Locale>(null)
+  localeOBS = this.localeBS.asObservable()
 
   private apiUrl = 'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword';
   private apiKey = '1da6775f-d4b5-4c8a-8130-1cf3cc09a7b9';
@@ -108,8 +110,30 @@ export class Syncservice {
       return str.substring(0, maxLength) + '…';
     }
   }
+  checklocale() {
+    let lang = this.translateService.getBrowserLang()
+    console.log("lang  = " + lang)
 
- 
+
+    if (lang === 'ru') {
+      this.locale = 'ru'
+      this.localeBS.next(Locale.Ru)
+        /*             localStorage.setItem('locale', this.locale)
+         */            console.log("локаль русская = " + this.locale)
+
+    } else /* if (this.locale === 'en-US')  */ {
+      this.locale = 'en'
+      this.localeBS.next(Locale.En)
+      console.log("локаль нерусская = " + this.locale)
+      /*             localStorage.setItem('locale', this.locale)
+       */
+    }
+
+    this.translateService.use(this.locale);
+
+
+    return this.locale
+  }
 
 }
 
